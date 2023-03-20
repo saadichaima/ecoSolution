@@ -2,7 +2,8 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
+import Stepper from "../components/Stepper/Stepper";
+import { TbSolarPanel, TbSolarPanel2 } from "react-icons/tb";
 const img_panneau_sol = new URL(
   "../../../public/assets/panneau_sur_sol.png",
   import.meta.url
@@ -18,6 +19,7 @@ export default function Etape3() {
   return (
     <div>
       <Navbar />
+      <Stepper index={3} />
       <div className=" container  justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
@@ -41,7 +43,8 @@ export default function Etape3() {
                     setPlace("toit");
                   }}
                 />
-                <img className="imgPaneau" src={img_panneau_sol}></img>
+                {/*<img className="imgPaneau" src={img_panneau_sol}></img>*/}
+                <TbSolarPanel2 style={{ color: "#09A79D" }} size={30} />
                 <label for="toit">sur le toit</label>
               </div>
               <div className="col">
@@ -55,10 +58,13 @@ export default function Etape3() {
                     setPlace("sol");
                   }}
                 />
+                <TbSolarPanel style={{ color: "#09A79D" }} size={30} />
                 <label for="sol">sur le sol</label>
               </div>
             </div>
-            <div className=" row  justify-content-center ">
+
+            <div className=" row  ">
+              <label>Longueur:</label>
               <input
                 type="text"
                 name="longeur"
@@ -69,6 +75,7 @@ export default function Etape3() {
                   setLongeur(event.target.value);
                 }}
               />
+              <label>Largeur:</label>
               <input
                 type="text"
                 name="largeur"
@@ -81,6 +88,7 @@ export default function Etape3() {
               />
             </div>
             <div className="row  justify-content-center">
+              <label>Orientation:</label>
               <select
                 name="type"
                 type="text"

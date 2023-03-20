@@ -1,6 +1,6 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   outline: none;
   box-sizing: border-box;
   font-family: 'Work Sans', sans-serif;
@@ -327,7 +327,118 @@ margin-top: 30px;
   outline: none;
 }
 /*=============================== Forllaire de devis =============== */
+/*=============================== Forllaire de devis =============== */
 
+.imgPaneau{
+  width: 20px;
+}
+.abc{
+  justify-content: flex-end;
+display: flex;
+}
+.form-button{
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: max-content;
+  background-color: #09A79D;
+  color: #ffffff;
+  border: 1px solid #09A79D;
+  box-shadow: #adabab; 
+}
+.form-button:hover{
+  transform: scale(1.1);
+  background-color: #faae12;
+  border: 1px solid #faae12;
+
+  box-shadow: 1px 1px 1px 1px #adabab;
+}
+.cardFormulaire {
+  height: max-content;
+  border-radius: 10px;
+ box-shadow:2px 2px 15px 5px rgba(0, 0, 0, 0.253);
+  background-color:white;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 50px;
+}
+
+
+.cardFormulaire:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.253);
+}
+.formInput{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-left: 12px;
+  border-radius: 5px;
+  max-width: 80%;
+  align-self: center;
+  background-color: #a2d2cb47;
+  border: none;
+
+}
+.formInput:hover{
+  transform: scale(1.01);
+}
+
+
+.formSelect {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
+.cardFormulaire-title {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #104e49;
+  margin-bottom: 20px;
+}
+.card-title{
+  padding-top: 20px;
+margin-top: 30px;
+}
+
+.container-fluid .row {
+  padding-top: 4rem;
+}
+
+
+.overflow {
+  overflow: hidden;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+
+}
+
+
+
+
+
+.form-button{
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 100px;
+  width: min-content;
+  background-color: #09A79D;
+  color: #ffffff;
+  border: 1px solid #09A79D;
+  box-shadow: #adabab;
+  margin-left: 10px;
+}
+.form-button:hover{
+  transform: scale(1.1);
+  background-color: #faae12;
+  border: 1px solid #faae12;
+
+  box-shadow: 1px 1px 1px 1px #adabab;
+}
 .imgPaneau{
   width: 100px;
 }

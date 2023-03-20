@@ -292,14 +292,18 @@
   }
   
   .titre {
-    padding-bottom: 10px;
+    
     display: flex;
     margin-left: 100px;
     position:initial;
     top: 100px;
     font-style: bold ;
-    justify-content: center;
+    justify-content: left;
     color :#21443d ;
+    padding: 50px;
+    font-size: 50px;
+  
+   
   }
   .article {
     display: flex;

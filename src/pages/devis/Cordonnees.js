@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Stepper from "../components/Stepper/Stepper";
 export default function Cordonnees() {
   const router = useRouter();
   const [firstName, setFirstName] = useState(router.query.firstName ?? "");
@@ -17,6 +18,7 @@ export default function Cordonnees() {
   return (
     <div>
       <Navbar />
+      <Stepper index={1} />
       <div className=" container  justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>

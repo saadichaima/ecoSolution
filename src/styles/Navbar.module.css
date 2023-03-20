@@ -2,12 +2,12 @@
   .nav__menuBar{
     display: flex;
     flex-direction: column;
-    row-gap: 6px;
+    row-gap: 10px;
     cursor: pointer;
     padding: 24px 16px;
   }
   .nav__menuBar div{
-    width: 40px;
+    width: 50px;
     height: 4px;
     
     background-color: #09A79D;
@@ -18,10 +18,10 @@
     flex-direction: column;
     position: fixed;
     top: 60px;
-    width: 288px;
-    row-gap: 24px;
+    width: 300px;
+    row-gap: 30px;
     right: -288px;
-    padding: 24px 16px;
+    padding: 30px 30px;
     transition: all 0.2s;
     min-height: calc(100vh - 60px);
     color: #09A79D;
@@ -72,7 +72,7 @@
   
   
   .center{
-    min-height: 600px;
+    min-height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +88,7 @@
       flex-direction: row;
       min-height: fit-content;
         width: 80%;   
-       column-gap: 50px;
+       column-gap: 60px;
 
     }
    
@@ -129,6 +129,9 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
+      max-height: 100px;
+      width: 100px;
+      margin:10px;
 
   
     }

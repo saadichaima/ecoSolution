@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Stepper from "../components/Stepper/Stepper";
 
 const img_panneau_sol = new URL(
   "../../../public/assets/panneau_sur_sol.png",
@@ -17,6 +18,7 @@ export default function Etape4() {
   return (
     <div>
       <Navbar />
+      <Stepper index={4} />
       <div className=" container  justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
@@ -112,7 +114,7 @@ export default function Etape4() {
                 className="form-button "
                 onClick={() => {
                   router.push({
-                    pathname: "/devis/Etape3",
+                    pathname: "/devis/Etape5",
                     query: {
                       firstName: router.query.firstName,
                       lastName: router.query.lastName,

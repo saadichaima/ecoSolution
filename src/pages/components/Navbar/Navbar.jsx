@@ -7,7 +7,10 @@ import styles from "../../../styles/Navbar.module.css";
 const log= new URL("./logo.png",import.meta.url); 
 
 const MENU_LIST = [
-  { text: "Acceuil", href: "/" },
+  { text: "", href: "/" },
+  { text: "", href: "/" },
+  { text: "", href: "/" },
+   { text: "Acceuil", href: "/" },
   { text: "Articles", href: "/Articles" },
   { text: "Services", href: "/ServicesPage" },
   { text: "Projets réferents", href: "/ProjetRefPage"},
@@ -52,8 +55,11 @@ console.log(navActive)
               }}
               key={menu.text}
             >
+              
               <NavItem  active={activeIdx === idx} {...menu} />
+             
             </div>
+          
           ))}
         </div>
       </nav>

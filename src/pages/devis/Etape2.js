@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Stepper from "../components/Stepper/Stepper";
 export default function Etape2() {
   const router = useRouter();
   const [type, setType] = useState(router.query.type ?? "pompageSoleil");
@@ -12,6 +13,7 @@ export default function Etape2() {
   return (
     <div>
       <Navbar />
+      <Stepper index={2} />
       <div className=" container  justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
