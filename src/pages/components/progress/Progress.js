@@ -19,7 +19,7 @@ export default function Progress() {
               <PowerProgess/>
             </div>
             
-            <div className="col ">
+            <div className="col">
               <ProjectProgress/>
             </div>
           </div>

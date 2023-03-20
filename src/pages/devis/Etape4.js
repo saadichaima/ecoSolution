@@ -114,7 +114,7 @@ export default function Etape4() {
                 className="form-button "
                 onClick={() => {
                   router.push({
-                    pathname: "/devis/Etape5",
+                    pathname: "/devis/Etape3",
                     query: {
                       firstName: router.query.firstName,
                       lastName: router.query.lastName,

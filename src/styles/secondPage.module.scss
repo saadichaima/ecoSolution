@@ -1,5 +1,6 @@
 .flex_container_page{
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   font-size: 30px;
   justify-content: space-between;
@@ -13,12 +14,12 @@
     max-width: 1500px;
     position: relative;
     background-position: center center;
-    background-size: cover;
-    margin-left: 17%;
+   margin :150px;
   
   }
-  .image1 img {
-    width:80% ;
+  .image1 {
+    max-width:80% ;
+
     box-shadow:rgb(13, 16, 15) 1px 0 15px ;
   }
   
@@ -43,6 +44,8 @@
     font-size:large;
    margin: 10%;
    margin-top:  25px;
+   font-size: 25px;
+   justify-content: right ;
   }
   .btnR {
     height: 10px auto;

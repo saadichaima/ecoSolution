@@ -28,6 +28,9 @@ export default function Etape3() {
             </h4>
           </div>
           <div>
+            
+          </div>
+          <div>
             <div className=" row  justify-content-center ">
               <div className="col">
                 <label>Emplacement:</label>
@@ -125,7 +128,7 @@ export default function Etape3() {
                   });
                 }}
               >
-                précédent
+              Précédent
               </button>
 
               <button

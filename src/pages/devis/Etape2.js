@@ -22,6 +22,9 @@ export default function Etape2() {
             </h4>
           </div>
           <div>
+            
+          </div>
+          <div>
             <div className="row  justify-content-center ">
               <select
                 name="type"
@@ -73,7 +76,7 @@ export default function Etape2() {
                   });
                 }}
               >
-                Précédent
+              Précédent
               </button>
               <button
                 className="form-button"

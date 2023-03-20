@@ -59,6 +59,9 @@ nav{
 .container-fluid .row {
   padding-top: 4rem;
 }
+.container-fluid  {
+  margin: 10px;
+}
 
 .cardP-img1{
 width: auto;
@@ -532,9 +535,9 @@ margin-top: 30px;
 
 
 .form-button{
-  border-radius: 10px;
+  border-radius: 5px;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 25px;
   max-width: 100px;
   width: min-content;
   background-color: #09A79D;
@@ -566,6 +569,7 @@ body {
 .row {
   display: flex;
   flex-wrap: wrap;
+  margin:10px;
 }
 
 ul {
@@ -574,23 +578,25 @@ ul {
 
 .footer {
   background-color: #ffffff;
-  padding: 70px 0;
+  padding: 40px 0;
+  margin-top:20px;
   box-shadow:  3px 3px 3px 3px  black;
 
 }
 
 .footer-col {
   width: 25%;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 
 .footer-col h4 {
   font-size: 18px;
   color: #09A79D;
   text-transform: capitalize;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   font-weight: 500;
   position: relative;
+  padding: 40 20px;
 }
 
 .footer-col h4::before {
@@ -606,6 +612,7 @@ ul {
 
 .footer-col ul li:not(:last-child) {
   margin-bottom: 10px;
+  
 }
 
 .footer-col ul li a {

@@ -27,11 +27,14 @@ export default function Cordonnees() {
             </h4>
           </div>
           <div>
+
+          </div>
+          <div>
             <div className="row  justify-content-center ">
               <input
                 type="text"
                 name="nom"
-                placeholder="nom"
+                placeholder="Nom"
                 className="formInput"
                 value={lastName}
                 onChange={(event) => {
@@ -43,7 +46,7 @@ export default function Cordonnees() {
               <input
                 type="text"
                 name="prenom"
-                placeholder="prenom"
+                placeholder="Prenom"
                 className="formInput"
                 value={firstName}
                 onChange={(event) => {
@@ -129,7 +132,7 @@ export default function Cordonnees() {
                   });
                 }}
               >
-                Next
+                Suivant
               </button>
             </div>
           </div>

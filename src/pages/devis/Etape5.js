@@ -66,8 +66,8 @@ export default function Etape5() {
               Gains économiques :{" "}
               {router.query.type === "pompageSteg" ||
               router.query.type === "maisonSteg"
-                ? 3500
-                : 2700 * router.query.estimation * 1700}
+                ? 2700
+                : 3500 * router.query.estimation * 1700}
             </div>
             <div className="row justify-content-end">
               <button
@@ -93,7 +93,7 @@ export default function Etape5() {
                   });
                 }}
               >
-                précédent
+              Précédent
               </button>
 
               <button className="form-button" onClick={sendResults}>

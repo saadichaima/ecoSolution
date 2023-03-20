@@ -11,7 +11,7 @@ export default function PowerProgess() {
                   <CountUp end={170} duration={2}/>
               </div>
               <div>
-              <h4 className="cardP-title"> puissance installé en kwc</h4>
+              <h4 className="cardP-title"> Puissance installé en kwc</h4>
               </div>
       </div>
   
