@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Stepper from "../components/Stepper/Stepper";
 export default function Cordonnees() {
   const router = useRouter();
   const [firstName, setFirstName] = useState(router.query.firstName ?? "");
@@ -15,21 +16,23 @@ export default function Cordonnees() {
   const [job, setJob] = useState(router.query.job ?? "");
   const [age, setAge] = useState(router.query.age ?? "");
   return (
-    <div>
+    <div className="wrapper2">
       <Navbar />
-      <div className=" container  justify-content-center row">
+      <Stepper index={1} />
+      <div className=" container whole-page justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
             <h4 className=" row cardFormulaire-title  justify-content-center  ">
               Etape 1 : Inserer vos données
             </h4>
           </div>
+         
           <div>
             <div className="row  justify-content-center ">
               <input
                 type="text"
                 name="nom"
-                placeholder="nom"
+                placeholder="Nom"
                 className="formInput"
                 value={lastName}
                 onChange={(event) => {
@@ -41,7 +44,7 @@ export default function Cordonnees() {
               <input
                 type="text"
                 name="prenom"
-                placeholder="prenom"
+                placeholder="Prenom"
                 className="formInput"
                 value={firstName}
                 onChange={(event) => {
@@ -127,7 +130,7 @@ export default function Cordonnees() {
                   });
                 }}
               >
-                Next
+                Suivant
               </button>
             </div>
           </div>

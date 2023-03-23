@@ -2,6 +2,9 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRef } from "react";
+import Stepper from "../components/Stepper/Stepper";
+import { TbSolarPanel, TbSolarPanel2 } from "react-icons/tb";
 
 const img_panneau_sol = new URL(
   "../../../public/assets/panneau_sur_sol.png",
@@ -9,14 +12,33 @@ const img_panneau_sol = new URL(
 );
 export default function Etape4() {
   const router = useRouter();
+  console.log(router.query);
   const type = router.query.type;
   const [estimation, setEstimation] = useState(
     router.query.estimation ?? type === "pompageSoleil" ? 4 : 2
   );
+  const [showOptions, setShowOptions] = useState(false);
+  const dropdownRef = useRef(null);
+  const handleSelect = (value) => {
+    setEstimation(value);
+    setShowOptions(false)
+  };
+  const handleDropdownClick = () => {
+    setShowOptions(!showOptions);
+  };
+  const handleOptionClick = (value) => {
+   // handleSelect(value);
+    dropdownRef.current.focus();
+ 
+  };
+  const handleDropdownChange = (event) => {
+    setShowOptions(event.target.checked);
+  };
 
   return (
-    <div>
+    <div className="wrapper2">
       <Navbar />
+      <Stepper index={4} />
       <div className=" container  justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
@@ -25,39 +47,71 @@ export default function Etape4() {
             </h4>
           </div>
           <div>
-            {type === "pompageSteg" || type === "maisonSteg" ? (
+            {type === "Pompage raccordé STEG" || type === "Maison raccordé STEG" ? (
+
+
               <div className=" row  justify-content-center ">
                 <div className="col">
                   <label>Electricité:</label>
                 </div>
                 <div className="row  justify-content-center ">
-                  <select
-                    name="estimation"
-                    type="text"
-                    placeholder="type de votre projet"
-                    className="formSelect form-select"
-                    value={estimation}
-                    onChange={(event) => {
-                      setEstimation(event.target.value);
-                    }}
-                  >
-                    <option value="2">100 DT</option>
-                    <option value="2.5">150 DT</option>
-                    <option value="3">200 DT</option>
-                    <option value="4">Plus que 200 DT</option>
-                  </select>
+
+
+                          <div className="formSelect1">
+                <div
+                  className="selectDropdown1"
+                  tabIndex="0"
+                  onClick={handleDropdownClick}
+                  onChange={handleDropdownChange}
+                  ref={dropdownRef}>
+                  <span>{estimation || "Choose estimation"}</span>
+                  <span className="selectArrow1"></span>
+                </div>
+                {showOptions && (
+                  <div className="selectOptions1">
+                    <div
+                      className="selectOption1"
+                      onClick={() => handleSelect("1") && handleOptionClick("100 DT")}
+                      >
+                      100 DT
+                    </div>
+                    <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("2") && handleOptionClick("150 DT")}
+                      >
+                      150 DT
+                    </div>
+                     <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("3") && handleOptionClick("200 DT")}
+                      >
+                      200 DT
+                    </div>
+                     <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("4") && handleOptionClick("Plus que 200 DT")}
+                      >
+                      Plus que 200 DT
+                    </div>
+                  </div>
+                )}
                 </div>
               </div>
+              </div>
+
+
+
             ) : (
               <></>
             )}
-            {type === "pompageSoleil" ? (
+            {type === "Pompage au fil de soleil" ? (
               <div className=" row  justify-content-center ">
                 <div className="col">
                   <label>Puissance Pompe:</label>
                 </div>
                 <div className="row  justify-content-center ">
-                  <select
+
+                  {/* <select
                     name="estimation"
                     type="text"
                     placeholder="type de votre projet"
@@ -76,14 +130,81 @@ export default function Etape4() {
                     <option value="22">20 HP</option>
                     <option value="27">25 HP</option>
                   </select>
+                </div> */}
+                
+                <div className="formSelect1">
+                <div
+                  className="selectDropdown1"
+                  tabIndex="0"
+                  onClick={handleDropdownClick}
+                  onChange={handleDropdownChange}
+                  ref={dropdownRef}>
+                  <span>{estimation || "Choose estimation"}</span>
+                  <span className="selectArrow1"></span>
                 </div>
+                {showOptions && (
+                  <div className="selectOptions1">
+                    <div
+                      className="selectOption1"
+                      onClick={() => handleSelect("4") && handleOptionClick("3")}
+                      >
+                      3 HP
+                    </div>
+                    <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("5") && handleOptionClick("4")}
+                      >
+                     4 HP 
+                    </div>
+                     <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("6.5") && handleOptionClick("5.5")}
+                      >
+                      5.5 HP
+                    </div>
+                     <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("9") && handleOptionClick("7.5")}
+                      >
+                      7.5 HP
+                    </div> 
+                    <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("12") && handleOptionClick("10")}
+                      >
+                     10 HP
+                    </div> 
+                    <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("18") && handleOptionClick("15")}
+                      >
+                      15 HP
+                    </div>
+                    <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("22") && handleOptionClick("20")}
+                      >
+                     20 HP
+                    </div>
+                    <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("27") && handleOptionClick("25")}
+                      >
+                      25 HP
+                    </div>
+                  </div>
+                )}
+                </div>
+
+              </div>
+
               </div>
             ) : (
               <></>
             )}
-            {type === "maisonNonSteg" ? (
+            {type === "Maison non raccordé STEG" ? (
               <div className=" row  justify-content-center ">
-                <div className="col">
+                {/* <div className="col">
                   <label>Estimation de l'installation:</label>
                 </div>
                 <div className="row  justify-content-center ">
@@ -101,6 +222,42 @@ export default function Etape4() {
                     <option value="2">2 KWC</option>
                     <option value="3">3 KWC</option>
                   </select>
+                </div> */}
+                
+
+                <div className="formSelect1">
+                <div
+                  className="selectDropdown1"
+                  tabIndex="0"
+                  onClick={handleDropdownClick}
+                  onChange={handleDropdownChange}
+                  ref={dropdownRef}>
+                  <span>{estimation || "Choose estimation"}</span>
+                  <span className="selectArrow1"></span>
+                </div>
+                {showOptions && (
+                  <div className="selectOptions1">
+                    <div
+                      className="selectOption1"
+                      onClick={() => handleSelect("1") && handleOptionClick("100 DT")}
+                      >
+                     1 KWC
+                    </div>
+                    <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("2") && handleOptionClick("150 DT")}
+                      >
+                     2 KWC
+                    </div>
+                     <div
+                      className="selectOption1"
+                      onClick={() =>  handleSelect("3") && handleOptionClick("200 DT")}
+                      >
+                      3 KWC
+                    </div>
+                   
+                  </div>
+                )}
                 </div>
               </div>
             ) : (
@@ -131,7 +288,7 @@ export default function Etape4() {
                   });
                 }}
               >
-                précédent
+                Précédent
               </button>
 
               <button

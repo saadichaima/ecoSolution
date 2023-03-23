@@ -7,6 +7,8 @@ import Services from "./components/Nos_services/Services";
 import Footer from "./components/Footer";
 import Projets from "./components/proj-main/projets";
 import Blogs from "./components/Articles/Blogs";
+import Titres from "./components/titres/titres";
+import Partenariat from "./components/partenariat/partenariat";
 export default function Home() {
   return (
     <>
@@ -18,14 +20,23 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>
+        <div className="wrapper2">
           <Navbar />
           
           <BootstrapCarousel />
+
           <Progress/>
+
+          <Titres text="Découvrir nos services"/>
+          
           <Services />
+          <Titres text="Nos projets réferents"/>
           <Projets />
-          <Blogs/>
+          <Titres text="Pour savoir plus sur l'energie solaire vous pouvez lire ces articles"/>
+          <Blogs/><Titres text="NOS PARTENAIRES"/>
+
+          <Partenariat/>
+         
           <Footer />
          
         </div>

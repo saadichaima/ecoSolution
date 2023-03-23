@@ -3,15 +3,19 @@ import Image from "next/image";
 import Services from "../Nos_services/Services";
 import React, { useEffect, useRef, useState } from "react";
 import NavItem from "./NavItems";
+import { useRouter } from "next/router";
+
 import styles from "../../../styles/Navbar.module.css";
+
 const log= new URL("./logo.png",import.meta.url); 
 
 const MENU_LIST = [
-  { text: "Acceuil", href: "/" },
+
+   { text: "Acceuil", href: "/" },
   { text: "Articles", href: "/Articles" },
-  { text: "Services", href: "/ServicesPage" },
+  { text: "Services", href: "/ServicePage" },
   { text: "Projets réferents", href: "/ProjetRefPage"},
-  { text: "Formulaire de devis ", href: "/devis/Cordonnees" },
+  // { text: "Formulaire de devis ", href: "/devis/Cordonnees" },
 
 ];
 
@@ -29,7 +33,7 @@ console.log(navActive)
         <div className={styles.logo}>
            
         <Link href={"/"}>
-        <img src={log} width="100"></img>  
+        <img src={log} width="150"></img>  
          
         </Link>
         </div>
@@ -52,10 +56,19 @@ console.log(navActive)
               }}
               key={menu.text}
             >
+              
               <NavItem  active={activeIdx === idx} {...menu} />
+             
             </div>
+          
           ))}
-        </div>
+         <Link href="/devis/Cordonnees">
+                 <button className={styles.navbarButton}
+                
+                 >Formulaire de devis</button>
+                </Link>
+          </div>
+       
       </nav>
     </header>
   );

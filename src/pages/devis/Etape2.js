@@ -3,54 +3,142 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRef } from "react";
+import Stepper from "../components/Stepper/Stepper";
 export default function Etape2() {
   const router = useRouter();
+  console.log(router.query);
   const [type, setType] = useState(router.query.type ?? "pompageSoleil");
   const [technology, setTechnology] = useState(
     router.query.technology ?? "Allemande"
   );
+  const [showOptions1, setShowOptions1] = useState(false);
+  const dropdownRef1 = useRef(null);
+  const dropdownRef2 = useRef(null);
+  const handleSelect1 = (value) => {
+    setTechnology(value);
+    console.log(value);
+    setShowOptions1(false);
+  };
+  const handleDropdownChange1 = (event) => {
+    setShowOptions1(event.target.checked);
+  };
+  const handleDropdownClick1 = () => {
+    setShowOptions1(!showOptions1);
+  };
+  const handleOptionClick1 = (value) => {
+    handleSelect1(value);
+    dropdownRef1.current.focus();
+  };
+  const [showOptions2, setShowOptions2] = useState(false);
+
+  const handleSelect2 = (value) => {
+    setType(value);
+    setShowOptions2(false);
+  };
+
+  const handleDropdownClick2 = () => {
+    setShowOptions2(!showOptions2);
+  };
+  const handleDropdownChange2 = (event) => {
+    setShowOptions2(event.target.checked);
+  };
+
+  const handleOptionClick2 = (value) => {
+    handleSelect2(value);
+    dropdownRef2.current.focus();
+  };
+  const handleSelectChange = (event) => {
+    setType(event.target.value);
+  };
+
   return (
-    <div>
+    <div className="wrapper2">
       <Navbar />
+      <Stepper index={2} />
       <div className=" container  justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
-            <h4 className=" row cardFormulaire-title  justify-content-center  ">
+            <h4 className=" row marginize-top cardFormulaire-title  justify-content-center  ">
               Etape 2 : Votre Projet
             </h4>
           </div>
           <div>
-            <div className="row  justify-content-center ">
-              <select
-                name="type"
-                type="text"
-                placeholder="type de votre projet"
-                className="formSelect form-select"
-                value={type}
-                onChange={(event) => {
-                  setType(event.target.value);
-                }}
-              >
-                <option value="pompageSoleil">Pompage au fil de soleil</option>
-                <option value="pompageSteg">Pompage raccordé STEG</option>
-                <option value="maisonSteg">Maison raccordé STEG </option>
-                <option value="maisonNonSteg">Maison non raccordé STEG </option>
-              </select>
+            <div className="row  justify-content-center">
+              <div className="formSelect1">
+                <div
+                  className="selectDropdown1"
+                  tabIndex="0"
+                  onClick={handleDropdownClick1}
+                  onChange={handleDropdownChange1}
+                  ref={dropdownRef1}>
+                  <span>{technology || "Choose technology"}</span>
+                  <span className="selectArrow1"></span>
+                </div>
+                {showOptions1 && (
+                  <div className="selectOptions1">
+                    <div
+                      className="selectOption1"
+                      onClick={() => handleSelect1("Allemande")}
+                      value="Allemande">
+                      Allemande
+                    </div>
+                    <div
+                      className="selectOption1"
+                      onClick={() => handleOptionClick1("Chinoise")}
+                      value="Chinoise">
+                      Chinoise
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="row  justify-content-center">
-              <select
-                name="type"
-                type="text"
-                placeholder="technologie"
-                className="formSelect form-select "
-                value={technology}
-                onChange={(event) => {
-                  setTechnology(event.target.value);
-                }}
-              >
-                <option value="Allemande">Allemande</option>
-                <option value="Chinoise">Chinoise</option>
-              </select>
+              <div className="formSelect1">
+                <div
+                  className="selectDropdown1"
+                  tabIndex="0"
+                  onClick={handleDropdownClick2}
+                  ref={dropdownRef2}>
+                  <span>{type || "Choose Type"}</span>
+                  <span className="selectArrow1"></span>
+                </div>
+                {showOptions2 && (
+                  <div className="selectOptions1">
+                    <div
+                      className="selectOption1"
+                      
+                      onClick={() => handleOptionClick2("Pompage au fil de soleil")}
+                      value="pompageSoleil">
+                    Pompage au fil de soleil
+                    </div>
+                    <div
+                      className="selectOption1"
+                      onClick={() =>
+                        handleOptionClick2("Pompage raccordé STEG")
+                      }
+                      value="pompageSteg">
+                      Pompage raccordé STEG
+                    </div>
+                    <div
+                      className="selectOption1"
+                      value="maisonSteg"
+                      onClick={() =>
+                        handleOptionClick2("Maison raccordé STEG")
+                      }>
+                      Maison raccordé STEG
+                    </div>
+                    <div
+                      className="selectOption1"
+                      value="maisonNonSteg"
+                      onClick={() =>
+                        handleOptionClick2("Maison non raccordé STEG")
+                      }>
+                      Maison non raccordé STEG
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="abc">
@@ -69,8 +157,7 @@ export default function Etape2() {
                       age: router.query.age,
                     },
                   });
-                }}
-              >
+                }}>
                 Précédent
               </button>
               <button
@@ -90,8 +177,7 @@ export default function Etape2() {
                       technology: technology,
                     },
                   });
-                }}
-              >
+                }}>
                 Suivant
               </button>
             </div>

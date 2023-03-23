@@ -2,16 +2,17 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
+import Stepper from "../components/Stepper/Stepper";
 const img_panneau_sol = new URL(
   "../../../public/assets/panneau_sur_sol.png",
   import.meta.url
 );
 export default function Etape5() {
   const router = useRouter();
+  console.log(router.query);
   //a changer par des requete back pour avoir les variable a jour a chaque fois!!!!!!!!
-  const puissanceAllemand = 5;
-  const puissanceChinois = 3;
+  const puissanceAllemand = 450;
+  const puissanceChinois = 475;
 
   async function sendResults() {
     //envoyer au backend les informations voici les variables et comment avoir leurs contenu
@@ -32,8 +33,9 @@ export default function Etape5() {
   }
 
   return (
-    <div>
+    <div className="wrapper2">
       <Navbar />
+      <Stepper index={5} />
       <div className=" container  justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
@@ -43,7 +45,7 @@ export default function Etape5() {
           </div>
           <div>
             <div className=" row  justify-content-center ">
-              puissance Installation : {router.query.estimation} KWC
+              Puissance Installation : {router.query.estimation} KWC
             </div>
             <div className=" row  justify-content-center ">
               Technologie Choisie : {router.query.technology}
@@ -65,15 +67,16 @@ export default function Etape5() {
               Gains économiques :{" "}
               {router.query.type === "pompageSteg" ||
               router.query.type === "maisonSteg"
-                ? 3500
-                : 2700 * router.query.estimation * 1700}
+                ? 2700
+                : 3500 * router.query.estimation * 1700}
+                {/* investisement  */}
             </div>
             <div className="row justify-content-end">
               <button
                 className="form-button "
                 onClick={() => {
                   router.push({
-                    pathname: "/devis/Etape3",
+                    pathname: "/devis/Etape4",
                     query: {
                       firstName: router.query.firstName,
                       lastName: router.query.lastName,
@@ -92,7 +95,7 @@ export default function Etape5() {
                   });
                 }}
               >
-                précédent
+              Précédent
               </button>
 
               <button className="form-button" onClick={sendResults}>
