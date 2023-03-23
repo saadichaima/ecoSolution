@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRef } from "react";
 import Stepper from "../components/Stepper/Stepper";
 import { TbSolarPanel, TbSolarPanel2 } from "react-icons/tb";
 const img_panneau_sol = new URL(
@@ -10,14 +11,31 @@ const img_panneau_sol = new URL(
 );
 export default function Etape3() {
   const router = useRouter();
+  console.log(router.query);
   const [place, setPlace] = useState(router.query.place ?? "sol");
   const [longeur, setLongeur] = useState(router.query.longeur ?? 0);
   const [largeur, setLargeur] = useState(router.query.largeur ?? 0);
   const [orientation, setOrientation] = useState(
     router.query.orientation ?? "sud"
   );
+  const [showOptions, setShowOptions] = useState(false);
+  const dropdownRef = useRef(null);
+  const handleSelect = (value) => {
+    setOrientation(value);
+    setShowOptions(false)
+  };
+  const handleDropdownClick = () => {
+    setShowOptions(!showOptions);
+  };
+  const handleDropdownChange = (event) => {
+    setShowOptions(event.target.value);
+  };
+  const handleOptionClick = (value) => {
+    handleSelect(value);
+    dropdownRef.current.focus();
+  };
   return (
-    <div>
+    <div className="wrapper2">
       <Navbar />
       <Stepper index={3} />
       <div className=" container  justify-content-center row">
@@ -28,46 +46,40 @@ export default function Etape3() {
             </h4>
           </div>
           <div>
-            
-          </div>
-          <div>
-            <div className=" row  justify-content-center ">
-              <div className="col">
-                <label>Emplacement:</label>
-              </div>
-              <div className="col">
-                <input
-                  type="radio"
-                  name="emplacement"
-                  id="toit"
-                  value="toit"
-                  checked={place === "toit"}
-                  onClick={(event) => {
-                    setPlace("toit");
-                  }}
-                />
-                {/*<img className="imgPaneau" src={img_panneau_sol}></img>*/}
-                <TbSolarPanel2 style={{ color: "#09A79D" }} size={30} />
-                <label for="toit">sur le toit</label>
-              </div>
-              <div className="col">
-                <input
-                  type="radio"
-                  name="emplacement"
+            <div className="row justify-content-center">
+              <div className="flex">
+              <h4 className="radtitle">Ou tu veux installer vos panneau ?  : </h4>
+              <div class='px'>
+                  <div className="itemrd">
+                    <label>
+                      <input type="radio" class="option-input radio" name="example"
+                      id="toit"
+                      value="toit"
+                      checked={place === "toit"}
+                      onChange={(event) => {
+                        setPlace("toit");
+                      }} />
+                    Sur le toit
+                    </label>
+                  </div>
+                  <div className="itemrd">
+                  <label>
+                  <input type="radio" class="option-input radio" name="example"
                   id="sol"
                   value="sol"
                   checked={place === "sol"}
-                  onClick={(event) => {
+                  onChange={(event) => {
                     setPlace("sol");
-                  }}
-                />
-                <TbSolarPanel style={{ color: "#09A79D" }} size={30} />
-                <label for="sol">sur le sol</label>
+                  }} />
+                  Sur le sol 
+                </label>
+                </div>
               </div>
-            </div>
-
-            <div className=" row  ">
-              <label>Longueur:</label>
+              </div>
+            </div>       
+            <div className=" row ">
+              <div className="Longeur">
+              <label>Largeur :
               <input
                 type="text"
                 name="longeur"
@@ -78,7 +90,8 @@ export default function Etape3() {
                   setLongeur(event.target.value);
                 }}
               />
-              <label>Largeur:</label>
+              </label>
+              <label>Longeur : 
               <input
                 type="text"
                 name="largeur"
@@ -89,23 +102,43 @@ export default function Etape3() {
                   setLargeur(event.target.value);
                 }}
               />
+              </label>
+              </div>
             </div>
             <div className="row  justify-content-center">
-              <label>Orientation:</label>
-              <select
-                name="type"
-                type="text"
-                placeholder="orientation"
-                className="formSelect form-select "
-                value={orientation}
-                onChange={(event) => {
-                  setOrientation(event.target.value);
-                }}
+              <div className="formSelect1">
+              <div className="region">
+              <h4 className="radtitle">Votre region :</h4>
+                <div className="selectDropdown1" tabIndex="0" onClick={handleDropdownClick} onChange={handleDropdownChange} ref={dropdownRef}
+                >
+                  <span>{orientation || 'Choose orientation'}</span>
+                  <span className="selectArrow1"></span>
+                </div>
+              {showOptions && (
+              <div className="selectOptions1">
+                <div
+                  className="selectOption1"
+                  onClick={() => handleSelect('sud')
+                }
+                >
+                  Sud
+                </div>
+                <div
+                  className="selectOption1"
+                  onClick={() => handleOptionClick('sudEst')}
+                >
+                  Sud Est
+                </div>
+                <div
+                className="selectOption1"
+                onClick={() => handleOptionClick('sudOuest')}
               >
-                <option value="sud">Sud</option>
-                <option value="sudEst">Sud Est</option>
-                <option value="sudOuest">Sud ouest</option>
-              </select>
+                Sud Ouest
+              </div>
+              </div>
+              )}
+              </div>
+              </div>
             </div>
 
             <div className="row justify-content-end">

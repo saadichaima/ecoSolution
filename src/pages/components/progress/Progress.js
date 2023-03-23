@@ -1,28 +1,27 @@
-import Co2Progress from "./Co2Progress";
-import PowerProgess from "./powerProgess";
-import ProjectProgress from "./projectProgress";
+import styles from "./Progress.module.css";
+import CircleProgress from "./circleProgress";
+import UseGetWindowSize from "../utils/UseGetWindowSize";
+import { items } from "./progressItems";
 export default function Progress() {
-    return (
-      <div>
-        <div className="container-fluid d-flex justify-content-center">
-          <div className="row">
-            <h1 className="col title" >Offrir de meilleurs résultats à nos clients</h1>
-          </div>
+  const size = UseGetWindowSize();
+  if (size.width <1000) {
+    return(
+        <div className={styles.container}>
+      <h1 className={styles.first_title_mobile} >Offrir de meilleurs résultats à nos clients</h1>
+      <div className={styles.counter_container_mobile}>   
+      {items.map((element, key) => <CircleProgress key={key} id={element.id} title={element.title} number={element.number} image={element.image} />)}
+         
         </div>
+        </div>
+    );
+  }
 
-          <div className="container-fluid d-flex justify-content-center">
-          <div className="row">
-          <div className="col ">
-              <Co2Progress/>
-            </div>
-            <div className="col ">
-              <PowerProgess/>
-            </div>
-            
-            <div className="col">
-              <ProjectProgress/>
-            </div>
-          </div>
+    return (
+      <div className={styles.container}>
+      <h1 className={styles.first_title} >Offrir de meilleurs résultats à nos clients</h1>
+      <div className={styles.counter_container}>   
+      {items.map((element, key) => <CircleProgress key={key} id={element.id} title={element.title} number={element.number} image={element.image} />)}
+         
         </div>
         </div>
     );

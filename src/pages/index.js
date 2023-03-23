@@ -20,7 +20,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>
+        <div className="wrapper2">
           <Navbar />
           
           <BootstrapCarousel />

@@ -87,14 +87,17 @@
       position: unset;
       flex-direction: row;
       min-height: fit-content;
-        width: 70%;   
-       column-gap: 70px;
+        width: 80%;   
+       column-gap: 50px;
 
     }
    
     .nav__item{
       color: #09A79D;
       font-weight: bold;
+      font-size: 20px;
+      margin-top: 10px ;
+      margin-left: 30px;
 
 
     }
@@ -129,9 +132,9 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      max-height: 100px;
+      /* max-height: 100px;
       width: 100px;
-      margin:10px;
+      margin:10px; */
 
   
     }

@@ -16,19 +16,17 @@ export default function Cordonnees() {
   const [job, setJob] = useState(router.query.job ?? "");
   const [age, setAge] = useState(router.query.age ?? "");
   return (
-    <div>
+    <div className="wrapper2">
       <Navbar />
       <Stepper index={1} />
-      <div className=" container  justify-content-center row">
+      <div className=" container whole-page justify-content-center row">
         <div className=" cardFormulaire   col-md-8 col-lg-8 col-sm-12">
           <div>
             <h4 className=" row cardFormulaire-title  justify-content-center  ">
               Etape 1 : Inserer vos données
             </h4>
           </div>
-          <div>
-
-          </div>
+         
           <div>
             <div className="row  justify-content-center ">
               <input

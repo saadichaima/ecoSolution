@@ -9,9 +9,10 @@ const img_panneau_sol = new URL(
 );
 export default function Etape5() {
   const router = useRouter();
+  console.log(router.query);
   //a changer par des requete back pour avoir les variable a jour a chaque fois!!!!!!!!
-  const puissanceAllemand = 5;
-  const puissanceChinois = 3;
+  const puissanceAllemand = 450;
+  const puissanceChinois = 475;
 
   async function sendResults() {
     //envoyer au backend les informations voici les variables et comment avoir leurs contenu
@@ -32,7 +33,7 @@ export default function Etape5() {
   }
 
   return (
-    <div>
+    <div className="wrapper2">
       <Navbar />
       <Stepper index={5} />
       <div className=" container  justify-content-center row">
@@ -68,6 +69,7 @@ export default function Etape5() {
               router.query.type === "maisonSteg"
                 ? 2700
                 : 3500 * router.query.estimation * 1700}
+                {/* investisement  */}
             </div>
             <div className="row justify-content-end">
               <button
