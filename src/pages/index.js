@@ -9,6 +9,7 @@ import Projets from "./components/proj-main/projets";
 import Blogs from "./components/Articles/Blogs";
 import Titres from "./components/titres/titres";
 import Partenariat from "./components/partenariat/partenariat";
+import ProjetsRef from "./components/ProjetReferentPage/ProjetsRef";
 export default function Home() {
   return (
     <>
@@ -32,6 +33,7 @@ export default function Home() {
           <Services />
           <Titres text="Nos projets réferents"/>
           <Projets />
+         
           <Titres text="Pour savoir plus sur l'energie solaire vous pouvez lire ces articles"/>
           <Blogs/><Titres text="NOS PARTENAIRES"/>
 

@@ -7,6 +7,22 @@ const img_panneau_sol = new URL(
   "../../../public/assets/panneau_sur_sol.png",
   import.meta.url
 );
+const img1 = new URL("../../../public/assets/CO2.png", import.meta.url);
+const img2 = new URL("../../../public/assets/gain.png", import.meta.url);
+const img3 = new URL(
+  "../../../public/assets/installation-facile.png",
+  import.meta.url
+);
+const img4 = new URL(
+  "../../../public/assets/panneau-solaire.png",
+  import.meta.url
+);
+const img5 = new URL("../../../public/assets/productif.png", import.meta.url);
+const img6 = new URL(
+  "../../../public/assets/gestion-de-projet.png",
+  import.meta.url
+);
+
 export default function Etape5() {
   const router = useRouter();
   console.log(router.query);
@@ -29,7 +45,7 @@ export default function Etape5() {
     // longeur: router.query.longeur,
     // largeur: router.query.largeur,
     // orientation: router.query.orientation,
-    // estimation: router.query.estimation,
+    // puissance: router.query.puissance,
   }
 
   return (
@@ -43,35 +59,71 @@ export default function Etape5() {
               Résultats
             </h4>
           </div>
-          <div>
-            <div className=" row  justify-content-center ">
-              Puissance Installation : {router.query.estimation} KWC
+
+          <div className="row">
+            <div className="result-col col  justify-content-center ">
+              <div className="row justify-content-center">
+                <img className="img-result" src={img3} />
+              </div>
+              <div className="result-text">Estimation d'Installation</div>
+              <div className="result-number">{router.query.estimation} KWC</div>
             </div>
-            <div className=" row  justify-content-center ">
-              Technologie Choisie : {router.query.technology}
+            <div className="result-col col  justify-content-center ">
+              <div className="row justify-content-center">
+                <img className="img-result" src={img6} />
+              </div>
+              <div className="result-text">Technologie Choisie</div>
+              <div className="result-number">{router.query.technology}</div>
             </div>
-            <div className=" row  justify-content-center ">
-              Nombre de panneaux requis :
-              {(router.query.estimation * 1000) / router.query.technology ===
-              "Allemande"
-                ? puissanceAllemand
-                : puissanceChinois}
+            <div className=" result-col col  justify-content-center ">
+              <div className="row justify-content-center">
+                <img className="img-result" src={img4} />
+              </div>{" "}
+              <div className="result-text ">Nombre de panneaux requis</div>
+              <div className="result-number">
+               
+                {Math.round((router.query.estimation *1000) / (router.query.technology ===
+                "Allemande"
+                  ? puissanceAllemand
+                  : puissanceChinois))}
+                
+              </div>
             </div>
-            <div className=" row  justify-content-center ">
-              Production annuelle : {router.query.estimation * 1700}
+            <div className="row">
+              <div className="result-col col  justify-content-center ">
+                <div className="row justify-content-center">
+                  <img className="img-result" src={img5} />
+                </div>
+                <div className="result-text">Production annuelle</div>
+                <div className="result-number">
+                  {" "}
+                  {router.query.estimation * 1700} Kwh
+                </div>
+              </div>
+              <div className="result-col col  justify-content-center ">
+                <div className="row justify-content-center">
+                  <img className="img-result" src={img1} />
+                </div>
+                <div className="result-text">Dimintion CO2</div>
+                <div className="result-number">
+                  {router.query.estimation * 0.77 * 25} T{" "}
+                </div>
+              </div>
+              <div className="result-col col  justify-content-center ">
+                <div className="row justify-content-center">
+                  <img className="img-result" src={img2} />
+                </div>
+                <div className="result-text">Gains économiques</div>
+                <div className="result-number justify-content-center">
+                  {(router.query.type === "pompageSteg" ||
+                  router.query.type === "maisonSteg"
+                    ? 2700
+                    : 3500 )* router.query.estimation*25*0.22 -router.query.estimation *1700*25*0.22}
+                  {/* investisement  */}
+                </div>
+              </div>
             </div>
-            <div className=" row  justify-content-center ">
-              Dimintion CO2 : {router.query.estimation * 0.77 * 25} T
-            </div>
-            <div className=" row  justify-content-center ">
-              Gains économiques :{" "}
-              {router.query.type === "pompageSteg" ||
-              router.query.type === "maisonSteg"
-                ? 2700
-                : 3500 * router.query.estimation * 1700}
-                {/* investisement  */}
-            </div>
-            <div className="row justify-content-end">
+            <div className=" row justify-content-end m-30">
               <button
                 className="form-button "
                 onClick={() => {
@@ -93,9 +145,8 @@ export default function Etape5() {
                       orientation: router.query.orientation,
                     },
                   });
-                }}
-              >
-              Précédent
+                }}>
+                Précédent
               </button>
 
               <button className="form-button" onClick={sendResults}>

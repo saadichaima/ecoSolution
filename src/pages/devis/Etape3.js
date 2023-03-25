@@ -16,7 +16,7 @@ export default function Etape3() {
   const [longeur, setLongeur] = useState(router.query.longeur ?? 0);
   const [largeur, setLargeur] = useState(router.query.largeur ?? 0);
   const [orientation, setOrientation] = useState(
-    router.query.orientation ?? "sud"
+    router.query.orientation ?? "votre orientation"
   );
   const [showOptions, setShowOptions] = useState(false);
   const dropdownRef = useRef(null);
@@ -34,6 +34,21 @@ export default function Etape3() {
     handleSelect(value);
     dropdownRef.current.focus();
   };
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+ 
+  const isSubmitDisabled = longeur === 0|| largeur === 0 || orientation === 'votre orientation';
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isSubmitDisabled) {
+      setErrorMessage('Please enter a value');
+    } else {
+      // Handle form submission
+      setErrorMessage('');
+      e.target.submit();
+    }
+  };
   return (
     <div className="wrapper2">
       <Navbar />
@@ -45,7 +60,7 @@ export default function Etape3() {
               Etape 3 : Votre Emplacement
             </h4>
           </div>
-          <div>
+          <div onSubmit={handleSubmit}>
             <div className="row justify-content-center">
               <div className="flex">
               <h4 className="radtitle">Ou tu veux installer vos panneau ?  : </h4>
@@ -140,6 +155,7 @@ export default function Etape3() {
               </div>
               </div>
             </div>
+            {(isSubmitDisabled || (hasSubmitted && isSubmitDisabled))&& <div className="row justify-content-center " style={{ color: 'orange' }}>* Merci de remplir tous les champs</div>}
 
             <div className="row justify-content-end">
               <button
