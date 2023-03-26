@@ -1,8 +1,7 @@
 import UseGetWindowSize from "../utils/UseGetWindowSize";
-import { useRouter } from "next/router";
+import { useRouter, withRouter } from "next/router";
 
-export default function Article({ id, title, content, image }) {
-
+ function Article({ id, title, content, image }) {
     const router = useRouter();
     const size = UseGetWindowSize();
     console.log(size);
@@ -48,3 +47,4 @@ export default function Article({ id, title, content, image }) {
         </div>
     );
 }
+export default withRouter(Article);

@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Navbar from "./components/Navbar/Navbar";
-import Progress from "./components/progress/progress";
+import Progress from "./components/progress/Progress";
 import { Inter } from "@next/font/google";
 import BootstrapCarousel from "./components/carousel/Bootstrap";
 import Services from "./components/Nos_services/Services";
 import Footer from "./components/Footer";
-import Projets from "./components/proj-main/projets";
+import Projets from "./components/proj-main/Projets";
 import Blogs from "./components/Articles/Blogs";
 import Titres from "./components/titres/titres";
 import Partenariat from "./components/partenariat/partenariat";

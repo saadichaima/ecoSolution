@@ -1,4 +1,4 @@
-import Projet1 from "./projet1";
+import Projet1 from "./Projet1";
 export default function Projets() {
   return (
     <div>
