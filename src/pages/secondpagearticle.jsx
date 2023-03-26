@@ -22,7 +22,10 @@ export default function SecondPageArticle({data}) {
             }).catch(error => console.log(error));
 
     }, []);
-
+useEffect(()=>{
+        console.log('hedha article', article)
+        console.log('hetha taille imta3 tableau images', article?.images?.length)
+    },[article]);
     return (
         <div>
             <Head>
@@ -34,9 +37,11 @@ export default function SecondPageArticle({data}) {
             <Navbar />
 
             <div className={styles.flex_container_page}>
-                {/* <h2 className={styles.titre}>{myObject.title}</h2>
-        <div className={styles.article}>{myObject.content}</div>
-        <img className={styles.image1} src={myObject.image} /> */}
+                
+                 <h2 className={styles.titre}>{article.titre}</h2>
+        <div className={styles.article}>{article.contenu}</div>
+        <img  className={styles.image1} src={`${PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL}/imagesArticle/${article?.images[0]}`} /> 
+            
 
                 <button
                     className={styles.btnR}
