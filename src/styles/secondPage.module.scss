@@ -24,19 +24,23 @@
   }
   
   .titre {
-    
     display: flex;
     margin-left: 100px;
-    position:initial;
+    position: initial;
     top: 100px;
-    font-style: bold ;
+    font-style: bold;
     justify-content: left;
-    color :#21443d ;
+    color: #21443d;
     padding: 50px;
     font-size: 50px;
-    margin:50px;
+    margin: 50px;
+    text-shadow: 2px 2px 2px #333;
+    text-transform: uppercase;
+  }
   
-   
+  .titre:hover {
+    color: #414841;
+    background-image: linear-gradient(to bottom, #f5f5ff, #dedbdb);
   }
   .article {
     display: flex;
@@ -146,9 +150,9 @@
   top: 1px;
   font-style: bold ;
   justify-content: Left;
-  color :#0BA59C; 
+  color : rgb(8,116,109); 
   font-family: Georgia, serif;
-  //text-decoration: ;
+  text-decoration : underline;
   font-size: 50px;
   margin-top: 40px;
   
