@@ -93,15 +93,15 @@ export default function Footer() {
                         <div class="footer-widget">
                             <div class="footer-logo">
                                 
-                                {/* class="img-fluid" */}
-                                <a href="index.html"><img className='img-fluid ' src={logg} width="200"></img></a>
+                             
+                                <a href="/"><img className='img-fluid ' src={logg} width="200"></img></a>
                             </div>
                             <div class="footer-text">
                                
                             </div>
                             <div class="footer-social-icon">
                                 <span>Abonnez nous</span>
-                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="https://www.facebook.com/ecosoltunisie"><i class="fab fa-facebook-f facebook-bg"></i></a>
                                 <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
                                 <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
                             </div>
@@ -113,10 +113,10 @@ export default function Footer() {
                                 <h3>Ecosolutions</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Articles</a></li>
-                                <li><a href="#">services</a></li>
-                                <li><a href="#">Projets Referents</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="/Articles">Articles</a></li>
+                                <li><a href="/ServicePage">services</a></li>
+                                <li><a href="/ProjetRefPage">Projets Referents</a></li>
+                                <li><a href="/Contact">Contact</a></li>
                              
                             </ul>
                         </div>

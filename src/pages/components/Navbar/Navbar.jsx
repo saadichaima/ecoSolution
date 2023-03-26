@@ -15,6 +15,7 @@ const MENU_LIST = [
   { text: "Articles", href: "/Articles" },
   { text: "Services", href: "/ServicePage" },
   { text: "Projets réferents", href: "/ProjetRefPage"},
+  { text: "Contact", href: "/Contact"},
   // { text: "Formulaire de devis ", href: "/devis/Cordonnees" },
 
 ];

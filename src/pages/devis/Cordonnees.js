@@ -15,6 +15,21 @@ export default function Cordonnees() {
   const [adress, setAdress] = useState(router.query.adress ?? "");
   const [job, setJob] = useState(router.query.job ?? "");
   const [age, setAge] = useState(router.query.age ?? "");
+
+  console.log(router.query);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const isSubmitDisabled = firstName === ''|| lastName === ''|| email ===''||phoneNumber===''|| adress === ''|| job===''|| age==='';
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setHasSubmitted(true);
+    if (!isSubmitDisabled) {
+      // Handle form submission
+    }
+  };
+
   return (
     <div className="wrapper2">
       <Navbar />
@@ -26,8 +41,8 @@ export default function Cordonnees() {
               Etape 1 : Inserer vos données
             </h4>
           </div>
-         
-          <div>
+
+          <div onSubmit={handleSubmit}>
             <div className="row  justify-content-center ">
               <input
                 type="text"
@@ -112,9 +127,12 @@ export default function Cordonnees() {
                 }}
               />
             </div>
+            {(isSubmitDisabled || (hasSubmitted && isSubmitDisabled)) && <div className="row justify-content-center " style={{ color: 'orange' }}>* Merci de remplir tous les champs</div>}
+
             <div className="row justify-content-end">
               <button
                 className="form-button"
+                disabled={isSubmitDisabled}
                 onClick={() => {
                   router.push({
                     pathname: "/devis/Etape2",
@@ -128,8 +146,7 @@ export default function Cordonnees() {
                       age: age,
                     },
                   });
-                }}
-              >
+                }}>
                 Suivant
               </button>
             </div>

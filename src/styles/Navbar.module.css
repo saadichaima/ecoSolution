@@ -8,8 +8,8 @@
   }
   .nav__menuBar div{
     width: 50px;
-    height: 4px;
-    
+    height: 3px;
+ 
     background-color: #09A79D;
     border-radius: 2px;
   }
@@ -30,6 +30,7 @@
   
   .active{
     right: 0 !important;
+   
   }
   .nav__link{
     font-size: 18px; 
@@ -42,7 +43,7 @@
   .nav__item{
     color: #09A79D;
     font-weight: bold;
-    
+   
       display: inline-block;
       vertical-align: top;
       padding-bottom: 5px;
@@ -69,13 +70,32 @@
     scale: 1;
     transform-origin: left;     
   }
-  
+  .logo{
+    margin-left: 20px;
+  }
   
   .center{
     min-height: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .navbarButton{
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom,  #FAAE12,#df9b3b);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-width: 0px 0px 0px 0px;
+    position: relative;
+    margin-left: 15px;
+    margin-bottom: 0px;
+    position:fixed;
   }
   
   @media screen and (min-width: 768px) {
@@ -97,7 +117,7 @@
       font-weight: bold;
       font-size: 20px;
       margin-top: 10px ;
-      margin-left: 30px;
+      margin-left: 10px;
 
 
     }
@@ -139,7 +159,7 @@
   
     }
    
-    }
+    
     .navbarButton{
       cursor: pointer;
       font-size: 18px;
@@ -155,7 +175,10 @@
       position: relative;
       margin-left: 150px;
       margin-bottom: 0px;
-      }
+      position:fixed;
+    }
+    
+    
       .navbarButton:focus{
         outline: none;
       }
@@ -166,3 +189,4 @@
       
         box-shadow: 1px 1px 1px 1px #adabab;
       }
+    }

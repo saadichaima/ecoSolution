@@ -1,23 +1,41 @@
 import Head from "next/head";
 // import styles from '../styles/Home.module.css'
 import styles from "../styles/secondPage.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
 import { items } from "./components/ArticlePage/item";
 import Partenariat from "./components/partenariat/partenariat";
 import ImageArticle from "./components/imageArticle/imageArticle";
+import Carousel from "react-bootstrap/Carousel";
+
 const imgg1 = new URL("../../public/assets/IMG_blog1.jpg", import.meta.url);
-export default function SecondPageArticle(id) {
+export default function SecondPageArticle() {
   const router = useRouter();
-  var id1 = router.query.id;
-  var myObject = items.find((item) => item.id1 === id1);
-  console.log(myObject);
+  const PROTOCOLANDHOSTNAMEPARTOFTHEURL = "http://localhost:5050/";
+  const id= router.query.id;
+console.log(id);
+
+  const [article, setArticle] = useState();
+ 
+
 
   useEffect(() => {
-    //use id to get article Data from back
-  }, []);
+    fetch(PROTOCOLANDHOSTNAMEPARTOFTHEURL + `articles/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+            setArticle(data);
+            console.log(article);
+        })
+        .catch((error) => console.log(error));
+}, []);
+// var articleid = article?.find(obj => obj.id === id);
+// console.log(article[0]);
+
+
+
   return (
     <div>
       <Head>
@@ -28,20 +46,51 @@ export default function SecondPageArticle(id) {
       </Head>
       <Navbar />
 
-      <div className={styles.flex_container_page}>
-        {/* <h2 className={styles.titre}>{myObject.title}</h2>
-        <div className={styles.article}>{myObject.content}</div>
-        <img className={styles.image1} src={myObject.image} /> */}
+      {/* <div className={styles.flex_container_page}>
+    
+    <h2 className={styles.titre}>
+        {article.titre}
+    </h2>
 
-        <button
-          className={styles.btnR}
-          onClick={() => {
-            router.back();
-          }}>
-          {" "}
-          Retour
-        </button>
-      </div>
+    <div className="row justify-content-center">
+        <div className=" col-sm-12 col-md-6">
+        <Carousel className="carousel" breakPoints={breakPoints} autoPlay>
+            <div>
+              <img className="cards-blog1"
+                src={myObject.image}
+                alt="Article image"
+              />
+            </div>
+            <div>
+              <img className="cards-blog1"
+                src={myObject.image}
+                alt="Article image"
+              />
+            </div>
+            <div>
+              <img className="cards-blog1"
+                src={myObject.image}
+                alt="Article image"
+              />
+            </div>
+        </Carousel> 
+        </div>
+        
+        <div className=" col-sm-12 col-md-6">
+        <p className={styles.article}>
+              {article.description}
+          </p>      
+        </div>
+    </div>
+      <button
+        className={styles.btnR}
+        onClick={() => {
+          router.back();
+        }}>
+        {" "}
+        Retour
+      </button>
+    </div> */}
       <Footer />
     </div>
   );

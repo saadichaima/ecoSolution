@@ -8,9 +8,9 @@ import Stepper from "../components/Stepper/Stepper";
 export default function Etape2() {
   const router = useRouter();
   console.log(router.query);
-  const [type, setType] = useState(router.query.type ?? "pompageSoleil");
+  const [type, setType] = useState(router.query.type ?? "Votre Projet");
   const [technology, setTechnology] = useState(
-    router.query.technology ?? "Allemande"
+    router.query.technology ?? "Type des panneaux"
   );
   const [showOptions1, setShowOptions1] = useState(false);
   const dropdownRef1 = useRef(null);
@@ -51,7 +51,20 @@ export default function Etape2() {
   const handleSelectChange = (event) => {
     setType(event.target.value);
   };
-
+  const [errorMessage, setErrorMessage] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+ 
+  const isSubmitDisabled = type === 'Votre Projet'|| technology === 'Type des panneaux';
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isSubmitDisabled) {
+      setErrorMessage('Please enter a value');
+    } else {
+      // Handle form submission
+      setErrorMessage('');
+      e.target.submit();
+    }
+  };
   return (
     <div className="wrapper2">
       <Navbar />
@@ -63,7 +76,7 @@ export default function Etape2() {
               Etape 2 : Votre Projet
             </h4>
           </div>
-          <div>
+          <div onSubmit={handleSubmit} >
             <div className="row  justify-content-center">
               <div className="formSelect1">
                 <div
@@ -140,6 +153,7 @@ export default function Etape2() {
                 )}
               </div>
             </div>
+            {(isSubmitDisabled || (hasSubmitted && isSubmitDisabled))&& <div className="row justify-content-center " style={{ color: 'orange' }}>* Merci de remplir tous les champs</div>}
 
             <div className="abc">
               <button
@@ -160,8 +174,11 @@ export default function Etape2() {
                 }}>
                 Précédent
               </button>
+
               <button
+             
                 className="form-button"
+                disabled={isSubmitDisabled}
                 onClick={() => {
                   router.push({
                     pathname: "/devis/Etape3",

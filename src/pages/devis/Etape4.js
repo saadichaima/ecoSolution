@@ -15,25 +15,43 @@ export default function Etape4() {
   console.log(router.query);
   const type = router.query.type;
   const [estimation, setEstimation] = useState(
-    router.query.estimation ?? type === "pompageSoleil" ? 4 : 2
+    router.query.estimation ?? 0
+    //  type === "pompageSoleil" ? 4 : 2
   );
   const [showOptions, setShowOptions] = useState(false);
   const dropdownRef = useRef(null);
-  const handleSelect = (value) => {
+  const handleSelect = (val,value) => {
+    setPuissance(val);
     setEstimation(value);
-    setShowOptions(false)
+    setShowOptions(false);
   };
   const handleDropdownClick = () => {
     setShowOptions(!showOptions);
   };
-  const handleOptionClick = (value) => {
-   // handleSelect(value);
+  const handleOptionClick = (val,value) => {
+    handleSelect(val,value);
     dropdownRef.current.focus();
- 
   };
   const handleDropdownChange = (event) => {
     setShowOptions(event.target.checked);
   };
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [puissance, setPuissance] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const isSubmitDisabled = puissance === 0;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isSubmitDisabled) {
+      setErrorMessage("Please enter a value");
+    } else {
+      // Handle form submission
+      setErrorMessage("");
+      e.target.submit();
+    }
+  };
+
 
   return (
     <div className="wrapper2">
@@ -47,60 +65,54 @@ export default function Etape4() {
             </h4>
           </div>
           <div>
-            {type === "Pompage raccordé STEG" || type === "Maison raccordé STEG" ? (
-
-
+            {type === "Pompage raccordé STEG" ||
+            type === "Maison raccordé STEG" ? (
               <div className=" row  justify-content-center ">
                 <div className="col">
                   <label>Electricité:</label>
                 </div>
                 <div className="row  justify-content-center ">
-
-
-                          <div className="formSelect1">
-                <div
-                  className="selectDropdown1"
-                  tabIndex="0"
-                  onClick={handleDropdownClick}
-                  onChange={handleDropdownChange}
-                  ref={dropdownRef}>
-                  <span>{estimation || "Choose estimation"}</span>
-                  <span className="selectArrow1"></span>
-                </div>
-                {showOptions && (
-                  <div className="selectOptions1">
+                  <div className="formSelect1">
                     <div
-                      className="selectOption1"
-                      onClick={() => handleSelect("1") && handleOptionClick("100 DT")}
-                      >
-                      100 DT
+                      className="selectDropdown1"
+                      tabIndex="0"
+                      onClick={handleDropdownClick}
+                      onChange={handleDropdownChange}
+                      ref={dropdownRef}>
+                      <span>{puissance || "Facture"}</span>
+                      <span className="selectArrow1"></span>
                     </div>
-                    <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("2") && handleOptionClick("150 DT")}
-                      >
-                      150 DT
-                    </div>
-                     <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("3") && handleOptionClick("200 DT")}
-                      >
-                      200 DT
-                    </div>
-                     <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("4") && handleOptionClick("Plus que 200 DT")}
-                      >
-                      Plus que 200 DT
-                    </div>
+                    {showOptions && (
+                      <div className="selectOptions1">
+                        <div
+                          className="selectOption1"
+                          value="1"
+                          onClick={() => handleSelect("100 DT",2)}>
+                          100 DT
+                        </div>
+                        <div
+                          className="selectOption1"
+                          value="2"
+                          onClick={() => handleSelect("150 DT",2.5)}>
+                          150 DT
+                        </div>
+                        <div
+                          className="selectOption1"
+                          value="3"
+                          onClick={() => handleSelect("200 DT",3)}>
+                          200 DT
+                        </div>
+                        <div
+                          className="selectOption1"
+                          value="4"
+                          onClick={() => handleSelect("Plus que 200 DT",4)}>
+                          Plus que 200 DT
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
                 </div>
               </div>
-              </div>
-
-
-
             ) : (
               <></>
             )}
@@ -110,15 +122,14 @@ export default function Etape4() {
                   <label>Puissance Pompe:</label>
                 </div>
                 <div className="row  justify-content-center ">
-
                   {/* <select
-                    name="estimation"
+                    name="puissance"
                     type="text"
                     placeholder="type de votre projet"
                     className="formSelect form-select"
-                    value={estimation}
+                    value={puissance}
                     onChange={(event) => {
-                      setEstimation(event.target.value);
+                      setpuissance(event.target.value);
                     }}
                   >
                     <option value="4">3 HP</option>
@@ -131,73 +142,63 @@ export default function Etape4() {
                     <option value="27">25 HP</option>
                   </select>
                 </div> */}
-                
-                <div className="formSelect1">
-                <div
-                  className="selectDropdown1"
-                  tabIndex="0"
-                  onClick={handleDropdownClick}
-                  onChange={handleDropdownChange}
-                  ref={dropdownRef}>
-                  <span>{estimation || "Choose estimation"}</span>
-                  <span className="selectArrow1"></span>
-                </div>
-                {showOptions && (
-                  <div className="selectOptions1">
+
+                  <div className="formSelect1">
                     <div
-                      className="selectOption1"
-                      onClick={() => handleSelect("4") && handleOptionClick("3")}
-                      >
-                      3 HP
+                      className="selectDropdown1"
+                      tabIndex="0"
+                      onClick={handleDropdownClick}
+                      onChange={handleDropdownChange}
+                      ref={dropdownRef}>
+                      <span>{puissance || "Puissance en HP"}</span>
+                      <span className="selectArrow1"></span>
                     </div>
-                    <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("5") && handleOptionClick("4")}
-                      >
-                     4 HP 
-                    </div>
-                     <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("6.5") && handleOptionClick("5.5")}
-                      >
-                      5.5 HP
-                    </div>
-                     <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("9") && handleOptionClick("7.5")}
-                      >
-                      7.5 HP
-                    </div> 
-                    <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("12") && handleOptionClick("10")}
-                      >
-                     10 HP
-                    </div> 
-                    <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("18") && handleOptionClick("15")}
-                      >
-                      15 HP
-                    </div>
-                    <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("22") && handleOptionClick("20")}
-                      >
-                     20 HP
-                    </div>
-                    <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("27") && handleOptionClick("25")}
-                      >
-                      25 HP
-                    </div>
+                    {showOptions && (
+                      <div className="selectOptions1">
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("3","4")}>
+                          3 HP
+                        </div>
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("4","5")}>
+                          4 HP
+                        </div>
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("5.5","6.5")}>
+                          5.5 HP
+                        </div>
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("7.5","9")}>
+                          7.5 HP
+                        </div>
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("10","12")}>
+                          10 HP
+                        </div>
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("15","18")}>
+                          15 HP
+                        </div>
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("20","22")}>
+                          20 HP
+                        </div>
+                        <div
+                          className="selectOption1"
+                          onClick={() => handleOptionClick("25","27")}>
+                          25 HP
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
                 </div>
-
-              </div>
-
               </div>
             ) : (
               <></>
@@ -205,17 +206,17 @@ export default function Etape4() {
             {type === "Maison non raccordé STEG" ? (
               <div className=" row  justify-content-center ">
                 {/* <div className="col">
-                  <label>Estimation de l'installation:</label>
+                  <label>puissance de l'installation:</label>
                 </div>
                 <div className="row  justify-content-center ">
                   <select
-                    name="estimation"
+                    name="puissance"
                     type="text"
                     placeholder="type de votre projet"
                     className="formSelect form-select"
-                    value={estimation}
+                    value={puissance}
                     onChange={(event) => {
-                      setEstimation(event.target.value);
+                      setpuissance(event.target.value);
                     }}
                   >
                     <option value="1">1 KWC</option>
@@ -223,45 +224,47 @@ export default function Etape4() {
                     <option value="3">3 KWC</option>
                   </select>
                 </div> */}
-                
 
                 <div className="formSelect1">
-                <div
-                  className="selectDropdown1"
-                  tabIndex="0"
-                  onClick={handleDropdownClick}
-                  onChange={handleDropdownChange}
-                  ref={dropdownRef}>
-                  <span>{estimation || "Choose estimation"}</span>
-                  <span className="selectArrow1"></span>
-                </div>
-                {showOptions && (
-                  <div className="selectOptions1">
-                    <div
-                      className="selectOption1"
-                      onClick={() => handleSelect("1") && handleOptionClick("100 DT")}
-                      >
-                     1 KWC
-                    </div>
-                    <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("2") && handleOptionClick("150 DT")}
-                      >
-                     2 KWC
-                    </div>
-                     <div
-                      className="selectOption1"
-                      onClick={() =>  handleSelect("3") && handleOptionClick("200 DT")}
-                      >
-                      3 KWC
-                    </div>
-                   
+                  <div
+                    className="selectDropdown1"
+                    tabIndex="0"
+                    onClick={handleDropdownClick}
+                    onChange={handleDropdownChange}
+                    ref={dropdownRef}>
+                    <span>{estimation || "Puissance en KWC"}</span>
+                    <span className="selectArrow1"></span>
                   </div>
-                )}
+                  {showOptions && (
+                    <div className="selectOptions1">
+                      <div
+                        className="selectOption1"
+                        onClick={() => handleSelect("1")}>
+                        1 KWC
+                      </div>
+                      <div
+                        className="selectOption1"
+                        onClick={() => handleSelect("2")}>
+                        2 KWC
+                      </div>
+                      <div
+                        className="selectOption1"
+                        onClick={() => handleSelect("3")}>
+                        3 KWC
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (
               <></>
+            )}
+            {(isSubmitDisabled || (hasSubmitted && isSubmitDisabled)) && (
+              <div
+                className="row justify-content-center "
+                style={{ color: "orange" }}>
+                * Merci de remplir tous les champs
+              </div>
             )}
 
             <div className="row justify-content-end">
@@ -286,14 +289,14 @@ export default function Etape4() {
                       orientation: router.query.orientation,
                     },
                   });
-                }}
-              >
+                }}>
                 Précédent
               </button>
 
               <button
                 className="form-button"
                 onClick={() => {
+                 
                   router.push({
                     pathname: "/devis/Etape5",
                     query: {
@@ -310,11 +313,11 @@ export default function Etape4() {
                       longeur: router.query.longeur,
                       largeur: router.query.largeur,
                       orientation: router.query.orientation,
-                      estimation: estimation,
+                      estimation:estimation,
+                      
                     },
                   });
-                }}
-              >
+                }}>
                 Suivant
               </button>
             </div>

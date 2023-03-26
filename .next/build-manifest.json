@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/devis/Etape4": [
+    "/secondpagearticle": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/devis/Etape4.js"
+      "static/chunks/pages/secondpagearticle.js"
     ]
   },
   "ampFirstPages": []

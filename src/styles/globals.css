@@ -1,6 +1,6 @@
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 * {
-  margin: 0;
+  
   padding: 0;
   outline: none;
   box-sizing: border-box;
@@ -17,6 +17,7 @@ a{
 
 header{
   position: sticky;
+  margin-top:-15px ;
   z-index: 30;
   top: 0;
 }
@@ -24,6 +25,7 @@ nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
   background-color: white;
 }
 .carousel{
@@ -183,7 +185,16 @@ margin-top: 30px;
 .proj {
   height:fit-content;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.655);
+  /* background-color: rgba(226, 45, 45, 0.655); */
+  background: url(../../public/assets/background.png)!important;
+padding: 15px;
+padding-top: 20px;
+  margin:20px;
+}
+.projectt{
+  height:fit-content;
+  border-radius: 5px;
+  background-color: rgba(210, 29, 29, 0.655);
 }
 
 .proj:hover {
@@ -210,6 +221,11 @@ font-size:xx-large
 .cards-blog1{
   max-width: 100%;
   max-height: 100%;
+  border-radius: 5%;
+  margin-bottom: 20px;
+  margin-left: 20px;
+
+ 
 }
 .lire{
   flex-direction: row;
@@ -266,6 +282,7 @@ margin-top: 30px;
 
 .container-fluid .row {
   padding-top: 4rem;
+  
 }
 
 
@@ -1073,9 +1090,10 @@ color: #878787;
 .article-image {
   border-radius: 10px;
   width: 100%;
-  max-height: 30vh;
+  /* max-height: 30vh; */
   transform: scale(1);
   transition: transform 0.5s ease;
+  margin:20px;
 
 }
 
@@ -1112,6 +1130,7 @@ color: #878787;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   border-width: 0px 0px 0px 0px;
+  margin-right: 20px;
 }
 .button-article:hover{
   transform: translateY(-3px);
@@ -1150,6 +1169,7 @@ color: #878787;
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin-left: 50px;
 }
 
 .articles-container{
@@ -1168,5 +1188,32 @@ color: #878787;
   font-family: Arial, Helvetica, sans-serif;
 }
 body{
-  background-color:#eeeeee ;
+  background-color:#eeeeee ;}
+/* ------------------resultat------------ */
+.result-col{
+margin:20px;
+border-style: solid;
+border-color: #09A79D;
+border-width: 1px;
+border-radius: 5%;
+}
+.img-result{
+  width:50%;
+  margin: 10px;
+}
+.result-text{
+  font-size: 18px;
+color:#09A79D;
+  font-weight: bold;
+  justify-content: center;
+
+}
+.result-number{
+  font-size: 20px;
+  color:#2c302f;
+  justify-content: center;
+  font-weight: bold;
+  margin: 15px;
+  margin-left: 25px;
+  
 }
