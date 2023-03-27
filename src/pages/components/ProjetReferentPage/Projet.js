@@ -1,23 +1,25 @@
 const img5 = new URL("./blog123.png", import.meta.url);
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useRouter, withRouter } from "next/router";
 import { items } from "./items";
-
 export default function Projet() {
+  const [projets, setProjets] = useState([]);
   const router = useRouter();
-  const [projet, setProjet] = useState([]);
-  const PROTOCOLANDHOSTNAMEPARTOFTHEURL = "http://localhost:5050/";
+  const PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL = "http://localhost:5050";
+
   useEffect(() => {
-    fetch(PROTOCOLANDHOSTNAMEPARTOFTHEURL + "projets")
+    fetch(`${PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL}/projets`)
       .then((response) => response.json())
       .then((data) => {
-        setProjet(data);
+        console.log("hedhi idata", data);
+        setProjets(data);
       })
       .catch((error) => console.log(error));
   }, []);
+
   return (
     <div>
-      {projet.map((item, index) => {
+      {projets.map((item, index) => {
         return (
           <div
             key={index}
@@ -26,37 +28,21 @@ export default function Projet() {
               <div className=" col-sm-12 col-md-6">
                 <img
                   className="cards-blog1"
-                  src={
-                    PROTOCOLANDHOSTNAMEPARTOFTHEURL +
-                    "imagesProjet/" +
-                    item.images[0]
-                  }></img>
+                  src={`${PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL}/imagesProjet/${item.images[0]}`}></img>
               </div>
               <div className=" col-sm-12 col-md-6">
                 <h4 className="proj-title">{item.titre}</h4>
-                <h5 className="proj-text text-secondary">
-                  {" "}
-                  Adresse : {item.adresse}
-                </h5>
-                <h5 className="proj-text text-secondary">
-                  {" "}
-                  Production anuelle : {item.productionAnuelle}
-                </h5>
-                <h5 className="proj-text text-secondary">
-                  {" "}
-                  Type de projet : {item.type}
-                </h5>
-
+                <p className="proj-text text-secondary">{item.description}</p>
                 <div
-                  className="project-button"
+                  className="button-article"
                   onClick={() => {
                     router.push({
                       pathname: "/secondPageProjet",
-                      query: { id: item.id },
+                      query: { id: item._id },
                     });
                   }}>
                   Lire la suite
-                </div>
+                </div>{" "}
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Stepper from "../components/Stepper/Stepper";
 const img_panneau_sol = new URL(
   "../../../public/assets/panneau_sur_sol.png",
@@ -26,9 +26,21 @@ const img6 = new URL(
 export default function Etape5() {
   const router = useRouter();
   console.log(router.query);
+  const PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL = 'http://localhost:5050'
+  const [puissance, setPuissance] = useState([]);
+
+  useEffect(() => {
+      fetch(`${PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL}/puissance`)
+          .then(response => response.json())
+          .then(data => {
+              console.log('hedhi idata', data);
+              setPuissance(data);
+          }).catch(error => console.log(error));
+
+  }, []);
   //a changer par des requete back pour avoir les variable a jour a chaque fois!!!!!!!!
-  const puissanceAllemand = 450;
-  const puissanceChinois = 475;
+  const puissanceAllemand = puissance.puissanceAllemande;
+  const puissanceChinois = puissance.puissanceChinoise;
 
   async function sendResults() {
     //envoyer au backend les informations voici les variables et comment avoir leurs contenu
