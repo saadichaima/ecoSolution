@@ -15,10 +15,15 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/ProjetRefPage": [
+    "/": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/ProjetRefPage.js"
+      "static/chunks/pages/index.js"
+    ],
+    "/Articles": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Articles.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
@@ -29,11 +34,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/secondPageProjet": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/secondPageProjet.js"
     ],
     "/secondpagearticle": [
       "static/chunks/webpack.js",
