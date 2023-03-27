@@ -13,6 +13,16 @@ import { Carousel } from "react-responsive-carousel";
 import Partenariat from "./components/partenariat/partenariat";
 import ImageArticle from "./components/imageArticle/imageArticle";
 const imgg1 = new URL("../../public/assets/IMG_blog1.jpg", import.meta.url);
+const Gallery = ({ imagePaths }) => {
+  if(!Array.isArray(imagePaths)){imagePaths=[imagePaths]}
+  return (
+    <div className="gallery">
+      {imagePaths.map(path => (
+        <img key={path} src={`http://localhost:5050/imagesArticle/${path}`} alt={path} />
+      ))}
+    </div>
+  );
+};
 export default function SecondPageArticle({data}) {
     const router = useRouter();
     const PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL = 'http://localhost:5050'
@@ -40,6 +50,7 @@ useEffect(()=>{
     const handleClickNext = () => {
       setCurrentImageIndex((currentImageIndex + 1) % article.images.length);
     };
+    
     return (
         <div>
             <Head>
@@ -65,7 +76,8 @@ useEffect(()=>{
 
     <div className="row justify-content-center">
        
-        
+    <Gallery imagePaths={article.images}></Gallery>
+
         <div className=" col-sm-12 col-md-6">
         <p className={styles.article}>
         {article.contenu}

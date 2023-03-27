@@ -12,6 +12,16 @@ import ImageArticle from "./components/imageArticle/imageArticle";
 import Carousel from "react-bootstrap/Carousel";
 
 const imgg1 = new URL("../../public/assets/IMG_blog1.jpg", import.meta.url);
+const Gallery = ({ imagePaths }) => {
+  if(!Array.isArray(imagePaths)){imagePaths=[imagePaths]}
+  return (
+    <div className="gallery">
+      {imagePaths.map(path => (
+        <img key={path} src={`http://localhost:5050/imagesProjet/${path}`} alt={path} />
+      ))}
+    </div>
+  );
+};
 export default function SecondPageProjet({data}) {
   const router = useRouter();
   const PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL = 'http://localhost:5050'
@@ -62,7 +72,7 @@ useEffect(()=>{
        {projet.contenu}
          </p>      
        </div>
-   
+       <Gallery imagePaths={projet.images}></Gallery>
 
         <button
           className={styles.btnR}
