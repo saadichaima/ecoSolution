@@ -2,9 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/ProjetRefPage": "pages/ProjetRefPage.js",
-  "/Contact": "pages/Contact.js",
-  "/devis/Cordonnees": "pages/devis/Cordonnees.js",
-  "/": "pages/index.js",
-  "/devis/Etape5": "pages/devis/Etape5.js"
+  "/devis/Etape3": "pages/devis/Etape3.js"
 }

@@ -5,6 +5,7 @@
     row-gap: 10px;
     cursor: pointer;
     padding: 24px 16px;
+    z-index: 999;
   }
   .nav__menuBar div{
     width: 50px;
@@ -26,6 +27,7 @@
     min-height: calc(100vh - 60px);
     color: #09A79D;
   background-color: white;
+  z-index: 999;
   }
   
   .active{

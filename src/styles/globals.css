@@ -82,18 +82,6 @@ color: #104e49;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* ========================================================== cards =========================================================== */
 
 .card {
@@ -119,9 +107,7 @@ color: #104e49;
 margin-top: 30px;
 }
 
-.container-fluid .row {
-  padding-top: 4rem;
-}
+
 
 
 .overflow {
@@ -191,11 +177,11 @@ padding-top: 15px;
 padding-left: 15px;
   margin:20px;
 }
-.projectt{
+/* .projectt{
   height:fit-content;
   border-radius: 5px;
   background-color: rgba(210, 29, 29, 0.655);
-}
+} */
 
 .proj:hover {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.253);
@@ -210,13 +196,11 @@ margin-top: 30px;
 font-size:xx-large
 }
 
-.overflow {
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
 
-}
 .card:hover {
   transform: scale(1.1);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.253);
+
 }
 .cards-blog1{
   max-width: 100%;
@@ -227,9 +211,7 @@ font-size:xx-large
 
  
 }
-.lire{
-  flex-direction: row;
-}
+
 
 .project-button{
   margin: 10px;
@@ -265,25 +247,13 @@ font-size:xx-large
   background-color: rgba(255, 255, 255, 0.655);
 }
 
-.card:hover {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.253);
-}
 
 
 
-.card-text {
-  font-size: .9rem;
-  padding:10px ;
-}
-.card-title{
-  padding-top: 20px;
-margin-top: 30px;
-}
 
-.container-fluid .row {
-  padding-top: 4rem;
-  
-}
+
+
+
 
 
 .overflow {
@@ -297,9 +267,7 @@ margin-top: 30px;
   transform: scale(1.1);
 }
 
-.lire{
-  flex-direction: row;
-}
+
 .cardse-img1{
   justify-self: center;
   max-width: 100% !important;
@@ -448,10 +416,7 @@ display: flex;
 
 .cardFormulaire:hover {
 }
-.shadowback{
-  background: url(../../public/assets/concept.jpg)!important;
 
-}
 /* the background image of all forms */
 .wrapper2 {
   background: url(../../public/assets/background.png)!important;
@@ -603,7 +568,7 @@ input[type="radio"] {
   margin-right: 0.5rem;
   outline: none;
   position: relative;
-  z-index: 1000;
+
 }
 .option-input:hover {
   background: #9faab7;
@@ -744,14 +709,7 @@ input[type="radio"] {
   color: #104e49;
   margin-bottom : 20px;
 }
-.card-title{
-  padding-top: 20px;
-margin-top: 30px;
-}
 
-.container-fluid .row {
-  padding-top: 4rem;
-}
 
 
 .overflow {
