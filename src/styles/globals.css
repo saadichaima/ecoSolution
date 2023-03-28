@@ -185,10 +185,10 @@ margin-top: 30px;
 .proj {
   height:fit-content;
   border-radius: 5px;
-  /* background-color: rgba(226, 45, 45, 0.655); */
-  background: url(../../public/assets/background.png)!important;
+  background-color: rgba(255, 255, 255, 0.655);
 padding: 15px;
-padding-top: 20px;
+padding-top: 15px;
+padding-left: 15px;
   margin:20px;
 }
 .projectt{
@@ -223,7 +223,7 @@ font-size:xx-large
   max-height: 100%;
   border-radius: 5%;
   margin-bottom: 20px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 
  
 }
@@ -447,6 +447,10 @@ display: flex;
 
 
 .cardFormulaire:hover {
+}
+.shadowback{
+  background: url(../../public/assets/concept.jpg)!important;
+
 }
 /* the background image of all forms */
 .wrapper2 {
@@ -1179,8 +1183,17 @@ color: #878787;
   align-items: center;
   
 }
+
 .articles{
   width: 80vw;
+}
+.services{
+  display:flex;
+  flex-wrap: wrap;
+
+}
+.Service{
+flex:1;
 }
 /****************************/
 
@@ -1201,6 +1214,11 @@ border-radius: 5%;
   width:50%;
   margin: 10px;
 }
+.img-result1{
+  width:50%;
+
+  
+}
 .result-text{
   font-size: 18px;
 color:#09A79D;
@@ -1217,3 +1235,22 @@ color:#09A79D;
   margin-left: 25px;
   
 }
+.popup {
+  position: fixed;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height:500px;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+

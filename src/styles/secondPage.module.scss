@@ -7,6 +7,16 @@
   text-align: center;
 }
 
+.type_adress{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 30px;
+  justify-content: space-between;
+  text-align: left;
+  margin-left:150px;
+}
+
 .image1 {
     display: flex;
     flex: 1 1 25%;
@@ -29,7 +39,7 @@
     position: initial;
     top: 100px;
     font-style: bold;
-    justify-content: left;
+    justify-content: center;
     color: #21443d;
     padding: 50px;
     font-size: 50px;
@@ -49,7 +59,7 @@
    margin: 10%;
    margin-top:  25px;
    font-size: 25px;
-   justify-content: right ;
+   justify-content: left ;
   }
   .btnR {
     height: 10px auto;

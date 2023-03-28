@@ -20,10 +20,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
-    "/Articles": [
+    "/Contact": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/Articles.js"
+      "static/chunks/pages/Contact.js"
+    ],
+    "/ProjetRefPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/ProjetRefPage.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
@@ -35,10 +40,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/secondpagearticle": [
+    "/devis/Cordonnees": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/secondpagearticle.js"
+      "static/chunks/pages/devis/Cordonnees.js"
+    ],
+    "/devis/Etape5": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/devis/Etape5.js"
     ]
   },
   "ampFirstPages": []

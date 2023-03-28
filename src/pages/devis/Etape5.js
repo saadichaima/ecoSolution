@@ -1,7 +1,9 @@
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
-import { useState,useEffect } from "react";
+import { useState, useEffect ,useRef} from "react";
+import Link from "next/link";
+
 import Stepper from "../components/Stepper/Stepper";
 const img_panneau_sol = new URL(
   "../../../public/assets/panneau_sur_sol.png",
@@ -22,22 +24,35 @@ const img6 = new URL(
   "../../../public/assets/gestion-de-projet.png",
   import.meta.url
 );
+const img7 = new URL(
+  "../../../public/assets/check.png",
+  import.meta.url
+);
 
 export default function Etape5() {
   const router = useRouter();
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   console.log(router.query);
-  const PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL = 'http://localhost:5050'
+  const PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL = "http://localhost:5050";
   const [puissance, setPuissance] = useState([]);
 
   useEffect(() => {
-      fetch(`${PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL}/puissance`)
-          .then(response => response.json())
-          .then(data => {
-              console.log('hedhi idata', data);
-              setPuissance(data);
-          }).catch(error => console.log(error));
-
+    fetch(`${PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL}/puissance`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("hedhi idata", data);
+        setPuissance(data);
+      })
+      .catch((error) => console.log(error));
   }, []);
+
+
+  const popupRef = useRef(null);
+
+
+
+
   //a changer par des requete back pour avoir les variable a jour a chaque fois!!!!!!!!
   const puissanceAllemand = puissance.puissanceAllemande;
   const puissanceChinois = puissance.puissanceChinoise;
@@ -93,12 +108,12 @@ export default function Etape5() {
               </div>{" "}
               <div className="result-text ">Nombre de panneaux requis</div>
               <div className="result-number">
-               
-                {Math.round((router.query.estimation *1000) / (router.query.technology ===
-                "Allemande"
-                  ? puissanceAllemand
-                  : puissanceChinois))}
-                
+                {Math.round(
+                  (router.query.estimation * 1000) /
+                    (router.query.technology === "Allemande"
+                      ? puissanceAllemand
+                      : puissanceChinois)
+                )}
               </div>
             </div>
             <div className="row">
@@ -130,7 +145,11 @@ export default function Etape5() {
                   {(router.query.type === "pompageSteg" ||
                   router.query.type === "maisonSteg"
                     ? 2700
-                    : 3500 )* router.query.estimation*25*0.22 -router.query.estimation *1700*25*0.22}
+                    : 3500) *
+                    router.query.estimation *
+                    25 *
+                    0.22 -
+                    router.query.estimation * 1700 * 25 * 0.22}
                   {/* investisement  */}
                 </div>
               </div>
@@ -161,9 +180,31 @@ export default function Etape5() {
                 Précédent
               </button>
 
-              <button className="form-button" onClick={sendResults}>
+              <button
+                className="form-button"
+                onClick={() => {
+                  setFormSubmitted(true) && sendResults;
+                }}>
                 Envoyer
               </button>
+              {formSubmitted && (
+                <div className="popup">
+                  <div className="iconform"> 
+                  <img className="img-result1  container-fluid d-flex justify-content-center" src={img7}></img>
+             
+                   </div>
+                  <div className="result-number" >Formulaire envoyé avec succès !</div>
+                  <div className="container-fluid  d-flex justify-content-center">
+                    <Link href="../../">
+                      <button className="blog-button  ">
+                       Merci
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              
+
+              )}
             </div>
           </div>
         </div>

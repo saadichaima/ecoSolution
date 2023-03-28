@@ -23,16 +23,21 @@ export default function Projet() {
         return (
           <div
             key={index}
-            className="proj container-fluid d-flex justify-content-center ">
+            className="container-article ">
             <div className="row justify-content-center">
-              <div className=" col-sm-12 col-md-6">
+              <div className="column1-article">
                 <img
-                  className="cards-blog1"
+                  className="article-image"
                   src={`${PROTOCOL_AND_HOST_NAME_PART_OF_THE_URL}/imagesProjet/${item.images[0]}`}></img>
               </div>
-              <div className=" col-sm-12 col-md-6">
-                <h4 className="proj-title">{item.titre}</h4>
-                <p className="proj-text text-secondary">{item.description}</p>
+              <div className="column2-article">
+                <h4 className="titre-article">{item.titre}</h4>
+                <h5 className="content-article">Adresse : {item.adresse}</h5>
+                <p className="content-article">Production Annuelle : {item.productionAnuelle}</p>
+
+                <p className="content-article">Type du Projet : {item.type}</p>
+                <div className="button-article-container">
+
                 <div
                   className="button-article"
                   onClick={() => {
@@ -42,7 +47,8 @@ export default function Projet() {
                     });
                   }}>
                   Lire la suite
-                </div>{" "}
+                </div>
+                </div>
               </div>
             </div>
           </div>
