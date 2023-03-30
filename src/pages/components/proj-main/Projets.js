@@ -1,4 +1,4 @@
-import Projet1 from "./projet1";
+import Projet1 from "./Projet1";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 export default function Projets() {
